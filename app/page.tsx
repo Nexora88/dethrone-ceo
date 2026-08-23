@@ -5,6 +5,7 @@ import CompanyCard from "@/components/CompanyCard";
 import BidModal from "@/components/BidModal";
 import Countdown from "@/components/Countdown";
 import FilterTabs from "@/components/FilterTabs";
+import StatsBar from "@/components/StatsBar";
 import { companies } from "@/data/companies";
 import { mockCeos } from "@/data/mockCeos";
 import { Company } from "@/types";
@@ -45,9 +46,12 @@ export default function Home() {
           Can you dethrone Elon Musk?
         </h1>
         <p className="text-gray-400 text-lg">
-          En yüksek teklifi ver, o anlık CEO ol. Her ay <strong>Boardroom Coup</strong> ile herkes düşer.
+          En yüksek teklifi ver, o anlık CEO ol. Her ay{" "}
+          <strong>Boardroom Coup</strong> ile herkes düşer.
         </p>
       </div>
+
+      <StatsBar />
 
       <div className="mb-8">
         <Countdown targetDate={nextCoupDate} />
