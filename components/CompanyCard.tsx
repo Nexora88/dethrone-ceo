@@ -47,7 +47,14 @@ export default function CompanyCard({ company, currentCEO, onBid }: Props) {
               className="w-8 h-8 rounded-full"
             />
             <div>
-              <p className="text-sm font-medium">@{currentCEO.x_username}</p>
+              <a
+                href={`https://x.com/${currentCEO.x_username}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-blue-400 hover:text-blue-300 hover:underline"
+              >
+                @{currentCEO.x_username}
+              </a>
               <p className="text-xs text-gray-400">
                 {formatUSD(currentCEO.bid_amount)} ile tahtta
               </p>
