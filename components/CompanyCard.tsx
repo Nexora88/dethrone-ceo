@@ -14,10 +14,14 @@ export default function CompanyCard({ company, currentCEO, onBid }: Props) {
     <div className="border border-gray-800 rounded-xl p-5 hover:border-gray-600 transition bg-gray-950">
       <div className="flex items-start justify-between">
         <div>
-          <h2 className="text-xl font-bold">{company.symbol}</h2>
-          <p className="text-sm text-gray-400">{company.name}</p>
+          <div className="flex items-center gap-2">
+            {company.flag && <span className="text-lg">{company.flag}</span>}
+            <h2 className="text-xl font-bold">{company.symbol}</h2>
+          </div>
+          <p className="text-sm text-gray-400 mt-0.5">{company.name}</p>
         </div>
-        {company.current_price && (
+
+        {company.current_price !== undefined && (
           <div className="text-right">
             <p className="font-medium">{formatPrice(company.current_price)}</p>
             {company.price_change_24h !== undefined && (
