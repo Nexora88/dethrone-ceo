@@ -3,11 +3,13 @@ export interface Company {
   symbol: string;
   name: string;
   type: "stock" | "crypto";
-  exchange?: string; // NASDAQ, NYSE, BIST vs.
-  flag?: string; // 🇺🇸 🇹🇷 🪙 vs.
+  exchange?: string;
+  flag?: string;
   logo?: string;
+  // Bu alanlar opsiyonel, çünkü başlangıçta data/companies.ts'te yok
   current_price?: number;
   price_change_24h?: number;
+  total_trades?: number;
 }
 
 export interface CEO {
