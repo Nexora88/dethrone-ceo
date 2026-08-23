@@ -18,6 +18,12 @@ export default function Header() {
           >
             Onur Anıtı
           </Link>
+          <Link
+            href="/about"
+            className="text-gray-300 hover:text-white transition"
+          >
+            Hakkımda
+          </Link>
         </nav>
       </div>
     </header>
