@@ -3,7 +3,8 @@ export interface Company {
   symbol: string;
   name: string;
   type: "stock" | "crypto";
-  exchange?: string; // NASDAQ, NYSE, BIST, vs.
+  exchange?: string; // NASDAQ, NYSE, BIST vs.
+  flag?: string; // 🇺🇸 🇹🇷 🪙 vs.
   logo?: string;
   current_price?: number;
   price_change_24h?: number;
@@ -26,7 +27,7 @@ export interface Bid {
   company_id: string;
   user_id: string;
   amount: number;
-  tx_signature?: string; // kripto işlem imzası
+  tx_signature?: string;
   created_at: string;
 }
 
