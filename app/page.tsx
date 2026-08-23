@@ -6,6 +6,7 @@ import BidModal from "@/components/BidModal";
 import Countdown from "@/components/Countdown";
 import FilterTabs from "@/components/FilterTabs";
 import { companies } from "@/data/companies";
+import { mockCeos } from "@/data/mockCeos";
 import { Company } from "@/types";
 
 const nextCoupDate = new Date("2026-08-31T23:59:59");
@@ -59,7 +60,7 @@ export default function Home() {
           <CompanyCard
             key={company.id}
             company={company}
-            currentCEO={null}
+            currentCEO={mockCeos[company.id] || null}
             onBid={handleBid}
           />
         ))}
@@ -68,7 +69,7 @@ export default function Home() {
       {selectedCompany && (
         <BidModal
           company={selectedCompany}
-          currentCEO={null}
+          currentCEO={mockCeos[selectedCompany.id] || null}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           onConfirm={handleConfirmBid}
