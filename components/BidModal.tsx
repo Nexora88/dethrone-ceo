@@ -5,6 +5,7 @@ import { Company, CEO } from "@/types";
 import { formatUSD } from "@/lib/utils";
 import ShareButton from "@/components/ShareButton";
 import ThroneHistory from "@/components/ThroneHistory";
+import PriceChart from "@/components/PriceChart";
 
 interface Props {
   company: Company;
@@ -86,6 +87,9 @@ export default function BidModal({
               </div>
             )}
 
+            {/* Grafik */}
+            <PriceChart symbol={company.symbol} />
+
             <div>
               <label className="text-sm text-gray-400 block mb-2">
                 Senin teklifin (USD)
@@ -109,8 +113,6 @@ export default function BidModal({
 
             <p className="text-xs text-gray-500 text-center leading-relaxed">
               Şu an test modundasın. Gerçek kripto ödemeler yakında aktif olacak.
-              <br />
-              Boardroom Coup her ayın sonunda tüm tahtları sıfırlar.
             </p>
           </div>
         ) : (
