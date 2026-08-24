@@ -6,6 +6,7 @@ import BidModal from "@/components/BidModal";
 import Countdown from "@/components/Countdown";
 import FilterTabs from "@/components/FilterTabs";
 import StatsBar from "@/components/StatsBar";
+import HotThrones from "@/components/HotThrones";
 import { companies } from "@/data/companies";
 import { mockCeos } from "@/data/mockCeos";
 import { Company } from "@/types";
@@ -35,8 +36,7 @@ export default function Home() {
 
   const handleConfirmBid = (amount: number) => {
     console.log("Teklif:", amount, "Şirket:", selectedCompany?.symbol);
-    alert(`${selectedCompany?.symbol} için $${amount} teklif edildi (test)`);
-    setIsModalOpen(false);
+    // Şimdilik sadece konsola yazıyoruz
   };
 
   return (
@@ -56,6 +56,8 @@ export default function Home() {
       <div className="mb-8">
         <Countdown targetDate={nextCoupDate} />
       </div>
+
+      <HotThrones />
 
       <FilterTabs active={filter} onChange={setFilter} />
 
