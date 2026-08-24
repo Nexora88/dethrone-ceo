@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Company, CEO } from "@/types";
 import { formatUSD } from "@/lib/utils";
 import ShareButton from "@/components/ShareButton";
+import ThroneHistory from "@/components/ThroneHistory";
 
 interface Props {
   company: Company;
@@ -33,12 +34,13 @@ export default function BidModal({
 
   const handleClose = () => {
     setSuccess(false);
+    setAmount(minBid);
     onClose();
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-      <div className="bg-gray-950 border border-gray-800 rounded-2xl p-6 w-full max-w-md">
+      <div className="bg-gray-950 border border-gray-800 rounded-2xl p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-xl font-bold flex items-center gap-2">
@@ -69,7 +71,14 @@ export default function BidModal({
                   className="w-8 h-8 rounded-full"
                 />
                 <div>
-                  <p className="font-medium">@{currentCEO.x_username}</p>
+                  <a
+                    href={`https://x.com/${currentCEO.x_username}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-blue-400 hover:underline"
+                  >
+                    @{currentCEO.x_username}
+                  </a>
                   <p className="text-gray-400">
                     {formatUSD(currentCEO.bid_amount)} ile tahtta
                   </p>
@@ -100,15 +109,21 @@ export default function BidModal({
 
             <p className="text-xs text-gray-500 text-center leading-relaxed">
               Şu an test modundasın. Gerçek kripto ödemeler yakında aktif olacak.
+              <br />
+              Boardroom Coup her ayın sonunda tüm tahtları sıfırlar.
             </p>
           </div>
         ) : (
-          <div className="space-y-5 text-center">
-            <div className="text-4xl mb-2">👑</div>
-            <h3 className="text-xl font-bold">Tebrikler!</h3>
-            <p className="text-gray-400">
-              {company.symbol} tahtını {formatUSD(amount)} ile devraldın.
-            </p>
+          <div className="space-y-5">
+            <div className="text-center">
+              <div className="text-4xl mb-2">👑</div>
+              <h3 className="text-xl font-bold">Tebrikler!</h3>
+              <p className="text-gray-400 mt-1">
+                {company.symbol} tahtını {formatUSD(amount)} ile devraldın.
+              </p>
+            </div>
+
+            <ThroneHistory companyId={company.id} />
 
             <ShareButton
               symbol={company.symbol}
@@ -127,4 +142,4 @@ export default function BidModal({
       </div>
     </div>
   );
-            }
+}
